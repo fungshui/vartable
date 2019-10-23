@@ -1,46 +1,34 @@
-# VarTable Options
+## VarTable Options
+
+
+
+Usage
+---------
+
+    $ vartable_report --input-vcf [../filename.vcf] --type [basecaller] \
+		--input-bam [../filename.bam] --input-ref [../filename.fasta] \
+		--minpercent [20] --minbq [25] --mindepth [10] \
+		--output-err [filename.err] --input-prm [../filename.fasta] \
+		--output-name [filename.tsv]
 
 ## (Required)
 **--input-vcf**		input VCF file
 
-*	Do we need to differentiate between NGS_Mapper VCF (every position) versus lofreq VCF (only variants)?*
+**--type**		input flag (base_caller | lofreq), this differentiates b/t a VCF with all positions and VCF with only variant positions
 
 **--input-bam**		input BAM file
 
-*	Do we assume BAM index file is in the same directory as BAM or should we include it as an option?
+**--input-ref**		input reference FASTA file or GenBank, gb extension file (this will parse for annotated information)
 
-*--input-bai	input BAM index file*
+**--minpercent**	input variant call percentage, for example 20%, 5% or 1%
 
-**--input-ref**		input reference FASTA file
+**--minbq**		input minimum base nt quality, for example 25% or 30%
 
-*	Assuming we are using a GenBank ref, are we planning to parse annotated data?*
+**--mindepth**		input minimum depth of coverage for each nt base, for example 10
 
-*--accession	input reference fASTA accession number to parse GenBank information*
-
-**--minpercent**	input variant call percentage (at what frequency do we call a nt a variant)
-
-*	Required b/c we cannot assume the level 20%, 5%, 1%... it also prevents a mistaken run by user*
-
-**--minbq**		input minimum base nt quality
-
-*	Required b/c we cannot assume the quality 25%, 30%... it depends on --minpercent*
-
+**--output-err**	input name of output file for user troubleshooting or submit the error file for help
 
 ## (Optional)
 **--input-prm**		input primer FASTA file
 
-**--mindepth**		input minimum depth of coverage for each nt base
-
-*	Should we set this automatically to a default of 10? For our usage, 10 does not change*
-
 **--output-name**	input the desired output filename (default format: tsv)
-
-*	Optional b/c I am assuming a generic output name can be given if none is given*
-
-**--output-dir**	input the desired output directory
-
-*	Optional b/c I am assuming VarTable is able to output into current working directory if none is given*
-
-*--output-err	input name of output error file for user troubleshooting or submit the error file for help*
-
-*	Instead of the user gathering all pertinenet run information, error file should contain it for quick help*
