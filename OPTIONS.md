@@ -9,7 +9,8 @@ Usage
 		--input-bam [../filename.bam] --input-ref [../filename.fasta] \
 		--minpercent [20] --minbq [25] --mindepth [10] \
 		--output-err [filename.err] --input-prm [../filename.fasta] \
-		--output-name [filename.tsv]
+		--output-name [filename.tsv] --input-region [10 200] \
+		--stats
 
 ## (Required)
 **--input-vcf**		input VCF file
@@ -32,3 +33,7 @@ Usage
 **--input-prm**		input primer FASTA file
 
 **--output-name**	input the desired output filename (default format: tsv)
+
+**--input-region**	input start and end positions; variant table will isolate variants within that region
+
+**--stats**		outputs a file containing genome statistics
